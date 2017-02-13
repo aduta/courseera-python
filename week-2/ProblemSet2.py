@@ -67,17 +67,16 @@ alist = ["a","e","i","o","u","y"]
 blist = ["alpha", "beta", "gamma", "delta", "epsilon", "eta", "theta"] 
 
 def problem2_2(my_list):
-    pass # replace this pass (a do-nothing) statement with your code
+    print(my_list)
+    print(my_list[0])
+    print(my_list[-1])
+    print(my_list[3:5])
+    print(my_list[:3])
+    print(my_list[3:])
+    print(len(my_list))
 
-
-
-
-
-
-
-
-
-
+    my_list.append('z')
+    print(my_list)
 
 #%%
 """
@@ -128,8 +127,8 @@ newEngland = ["Maine","New Hampshire","Vermont", "Rhode Island",
 "Massachusetts","Connecticut"]
 
 def problem2_3(ne):
-    pass # replace this pass (a do-nothing) statement with your code
-
+    for state in ne:
+        print(state, "has", len(state), "letters")
     
 #%%
 """
@@ -148,8 +147,11 @@ import random
 
 def problem2_4():
     """ Make a list of 10 random reals between 30 and 35 """
-    random.seed()
-    pass # replace this pass (a do-nothing) statement with your code
+    random.seed(70)
+    lis = []
+    for i in range(10):
+        lis.append(random.random() * 5 + 30)
+    print(lis)
 
 #%%
 """
@@ -203,7 +205,8 @@ def problem2_5():
     # Setting the seed makes the random numbers always the same
     # This is to make the auto-grader's job easier.
     random.seed(171)  # don't remove when you submit for grading
-    pass # replace this pass (a do-nothing) statement with your code
+    for i in range(10):
+        print(random.randint(1,6))
 
 #%%
 """
