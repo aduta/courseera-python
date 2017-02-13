@@ -276,13 +276,12 @@ def problem1_7():
     base_b = float(input("Enter the length of the other base: "))
     height = float(input("Enter the height: "))
     
-    print("The area of a trapezoid with bases", base_a, "and", base_b,
-          " and height", height, "is", (base_a + base_b) * height / 2)
+    print("The area of a trapezoid with bases", base_a, "and", base_b, "and height", height, "is", (base_a + base_b) * height / 2)
     
 
 
 
-
+problem1_7()
 
 #%%
 """
