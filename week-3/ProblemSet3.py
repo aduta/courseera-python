@@ -1,17 +1,17 @@
 # - ProblemSet3.py *- coding: utf-8 -*-
 """
 Problem 3_1:
-Write a function that reads a text file and counts the number of characters in 
-it.  Print both the text file and the number of characters. Do this so that the 
-printout isn't doubled space (use an end=""  argument in the print statement). 
-Also, skip a line before printing the count. Note that it is easy to get the 
+Write a function that reads a text file and counts the number of characters in
+it.  Print both the text file and the number of characters. Do this so that the
+printout isn't doubled space (use an end=""  argument in the print statement).
+Also, skip a line before printing the count. Note that it is easy to get the
 number of characters in each line using the len() function.
 Here is my run for HumptyDumpty.txt.  Let me point out one thing that is not
 visible here and is a bit technical.  At the end of each of the first three
 lines there is a <newline> character.  These are invisible.  If you do the count
 by eye, you are likely to come up short by these three characters, but they
 are visible to len() and you should count them -- they are part of the 141
-"letters" in the humptydumpty.txt file.  Counting them makes this an easier 
+"letters" in the humptydumpty.txt file.  Counting them makes this an easier
 function for you to write.
 
 Your output should look just like this for the autograder:
@@ -27,20 +27,28 @@ There are 141 letters in the file.
 """
 #%%
 def problem3_1(txtfilename):
-    pass # replace this pass (a do-nothing) statement with your code
+    f = open(txtfilename)
+    length = 0
+    for line in f:
+        length += len(line)
+        print(line, end="")
+
+    print()
+    print()
+    print("There are", length, "letters in the file")
 
 #%%
-""" 
+"""
 Problem 3_2:
-Below you see three objects which are of collection data type: a list, a tuple, 
-and a string. Although different in many ways, you can write a 'for' loop that 
+Below you see three objects which are of collection data type: a list, a tuple,
+and a string. Although different in many ways, you can write a 'for' loop that
 steps through a "collection" and it will work with all three. This problem
 is started for you. Finish it by writing the loop that will step through the
-collection and print out its items, one per line. Test it and make sure that 
-it works for all three of the following data objects. 
+collection and print out its items, one per line. Test it and make sure that
+it works for all three of the following data objects.
 
 Be sure that your code does not include the name of any one of these data
-collections. That would stop it from being general enough to deal with a 
+collections. That would stop it from being general enough to deal with a
 different collection.
 
 There is a printout of my run after the problem starter.
@@ -52,10 +60,15 @@ str1 = "Rumplestilskin"             # string
 
 #%%
 def problem3_2(collection):
-    pass # replace this pass (a do-nothing) statement with your code
+    for item in collection:
+        print(item)
+
+# problem3_2(nlis)
+# problem3_2(atup)
+# problem3_2(str1)
 #%%
-""" 
-My runs 
+"""
+My runs
 problem3_2(nlis)
 23
 64
@@ -94,7 +107,7 @@ Write a function that will convert a date from one format to another.
 Specifically, 06/10/2016 should convert to June 17, 2016.  Actually, you
 will input the 6, the 17, and the 2016 as separate integers (numbers) and
 the function will assemble and print the date as June 17, 2016.  I suggest
-that you create a tuple months = ("January", "February", "March", ...) to 
+that you create a tuple months = ("January", "February", "March", ...) to
 store the names of the months.  Then it is easy to access the name February
 as months[1] and so on.
 
@@ -106,11 +119,18 @@ June 17, 2016
 function will confuse Python and will have to be more complex to work. ***
 """
 #%%
+import datetime
 def problem3_3(month, day, year):
-    """ Takes date of form mm/dd/yyyy and writes it in form June 17, 2016 
+    """ Takes date of form mm/dd/yyyy and writes it in form June 17, 2016
         Example6: problem3_5(6, 17, 2016) gives June 17, 2016 """
-    pass # replace this pass (a do-nothing) statement with your code
+    ml = []
+    for i in range(1,13):
+        ml.append(datetime.date(year, i, day).strftime('%B'))
 
+    months = tuple(ml)
+    print(months[month], str(day) + ',', year)
+
+# problem3_3(2,3,2017)
 #%%
 """
 Problem 3_4:
@@ -130,14 +150,19 @@ problem3_4("July",17, 2016)
 #%%
 def problem3_4(mon, day, year):
     """ Takes date such as July 17, 2016 and write it as 7/17/2016 """
-    pass # replace this pass (a do-nothing) statement with your code
+    d = {}
+    for i in range(1, 13):
+        d[datetime.date(year, i, day).strftime('%B')] = i
 
+    print(str(d[mon]) + '/' + str(day) + '/' + str(year))
+
+# problem3_4("July",17, 2016)
 #%%
-"""    
-    
+"""
+
 Problem 3_5:
 Write a function that will look up a phone number given a name.  Use this
-dictionary of phone numbers in your program, so that the grader will know 
+dictionary of phone numbers in your program, so that the grader will know
 what phone numbers are available.  In it's simplest form, the program will
 crash if a name that isn't in its dictionary is asked for.
 
@@ -152,19 +177,21 @@ Below is the start of the program including the dictionary.
 
 def problem3_5(name):
     """ Looks up the phone number of the person whose name is name """
-    
+
     phone_numbers = {"abbie":"(860) 123-4535", "beverly":"(901) 454-3241", \
                       "james": "(212) 567-8149", "thomas": "(795) 342-9145"}
-    pass # replace this pass (a do-nothing) statement with your code
 
+    print(phone_numbers[name])
+
+# problem3_5("james")
 #%%
 """
 Problem 3_6:
-Write a program (not just a function, but a stand alone program or script) that 
+Write a program (not just a function, but a stand alone program or script) that
 reads through a file and writes another file that gives the length of each line
 in the first file.  If line is the line that you've read into your program, use
 line.strip("\n") to strip away the invisible newline character at the end of
-each line.  Otherwise, your count will be one higher than the autograder's. 
+each line.  Otherwise, your count will be one higher than the autograder's.
 Note that since this is a program running from the Command Window (or terminal
 or cmd.exe), it won't be runnable as our usual functions are by entering
 Shift-Enter.  You should use the File menu in Spyder to create you own file.
@@ -206,7 +233,16 @@ problem3_7("flowers.csv","alyssum")
 Solution starter:
 """
 #%%
+import csv
 def problem3_7(csv_pricefile, flower):
-    pass # replace this pass (a do-nothing) statement with your code
-    
+    f = open(csv_pricefile)
+    csv_reader = csv.reader(f)
+    # d = {row[0]:row[1] for row in csv_reader}
+    d =dict(filter(None, csv_reader))
+    print(d[flower])
+
+    f.close()
+
+# problem3_7("flowers.csv","alyssum")
+
 #%%

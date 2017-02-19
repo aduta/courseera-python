@@ -2,4 +2,13 @@
 
 import sys
 
-# add your code here
+inf = open(sys.argv[1])
+outf = open(sys.argv[2], 'w')
+
+for line in inf:
+  chars = len(line.strip('\n'))
+  outf.write(str(chars) + '\n')
+
+inf.close()
+outf.close()
+

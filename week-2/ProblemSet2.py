@@ -225,8 +225,9 @@ def problem2_6():
     # Setting the seed makes the random numbers always the same
     # This is to make the auto-grader's job easier.
     random.seed(431)  # don't remove when you submit for grading
-    pass # replace this pass (a do-nothing) statement with your code
-
+    for i in range(100):
+        print(random.randint(1,6) + random.randint(1,6))
+        
    
 #%%
 """
@@ -287,8 +288,13 @@ Area of a triangle with sides 3.0 4.0 5.0 is 6.0
 
 def problem2_7():
     """ computes area of triangle using Heron's formula. """
-    pass # replace this pass (a do-nothing) statement with your code
-    
+    a = float(input('enter length of side one:'))
+    b = float(input('enter length of side two:'))
+    c = float(input('enter length of side three:'))
+    s = (a + b + c) / 2
+
+    print('Area of a triangle with sides', a, b, c, (s * (s-a) * (s-b) * (s-c)) **.5)   
+
 #%%
 """ 
 Problem 2_8:
@@ -309,9 +315,10 @@ hourly_temp = [40.0, 39.0, 37.0, 34.0, 33.0, 34.0, 36.0, 37.0, 38.0, 39.0, \
                36.0, 35.0, 33.0, 32.0]
 #%%
 def problem2_8(temp_list):
-    pass # replace this pass (a do-nothing) statement with your code
+    print(sum(temp_list) / len(temp_list))
+    print(max(temp_list))
+    print(min(temp_list))
         
-    
 #%%
 """
 Sample run using the list hourly_temp. Note that the grader will use a
