@@ -34,9 +34,9 @@ def problem3_1(txtfilename):
         print(line, end="")
 
     print()
-    print()
     print("There are", length, "letters in the file")
 
+problem3_1("humptydumpty.txt")
 #%%
 """
 Problem 3_2:
@@ -125,12 +125,12 @@ def problem3_3(month, day, year):
         Example6: problem3_5(6, 17, 2016) gives June 17, 2016 """
     ml = []
     for i in range(1,13):
-        ml.append(datetime.date(year, i, day).strftime('%B'))
+        ml.append(datetime.date(year, i, 1).strftime('%B'))
 
     months = tuple(ml)
     print(months[month], str(day) + ',', year)
 
-# problem3_3(2,3,2017)
+# problem3_3(2,31,2017)
 #%%
 """
 Problem 3_4:
@@ -152,7 +152,7 @@ def problem3_4(mon, day, year):
     """ Takes date such as July 17, 2016 and write it as 7/17/2016 """
     d = {}
     for i in range(1, 13):
-        d[datetime.date(year, i, day).strftime('%B')] = i
+        d[datetime.date(year, i, 1).strftime('%B')] = i
 
     print(str(d[mon]) + '/' + str(day) + '/' + str(year))
 

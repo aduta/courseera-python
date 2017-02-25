@@ -11,14 +11,14 @@ lstr1 = "A very long string can be tied together using " + \
 lstr2 = ("A very long string can also be tied together using "
          "parentheses to enclose the various parts.")
 #%%
-""" 
+"""
 BUILDING LISTS OF RANDOM NUMBERS; RETURNING FUNCTIONAL VALUES
 
 Sometimes you need a list of numbers. Here is a way to build a list of pseudo-
-random numbers. We again import the python library random. It furnishes a 
-random integer generator called randint(). 
+random numbers. We again import the python library random. It furnishes a
+random integer generator called randint().
 
-Note the basic loop design pattern reappears.  
+Note the basic loop design pattern reappears.
 
 The function make_random() below builds a list of random integers using the
 randint() function from the random library.  Note that we do not print the list
@@ -35,22 +35,22 @@ def make_random():
     for i in range(0,10):
         numlis.append(random.randint(1,100))
     return numlis
-    
+
 def call_make_random():
     """ Uses make_random to get a list of random numbers """
     random_integers = make_random()
     print("The list of random numbers is",random_integers)
-#%%  
- 
-""" 
-For testing your program, however, it can be deadly to have a different set of 
-random numbers each time it is run. That's a formula for madness: sometimes 
-your program may work and sometimes not, depending on the particular random 
-numbers that happen to be generated on that run. Consequently, it can be very 
-hard to track down the error.  For testing purposes, you can generate the same 
-random numbers over and over again by setting the random number generator's 
-seed to the same value each time.  
-"""   
+#%%
+
+"""
+For testing your program, however, it can be deadly to have a different set of
+random numbers each time it is run. That's a formula for madness: sometimes
+your program may work and sometimes not, depending on the particular random
+numbers that happen to be generated on that run. Consequently, it can be very
+hard to track down the error.  For testing purposes, you can generate the same
+random numbers over and over again by setting the random number generator's
+seed to the same value each time.
+"""
 #%%
 
 import random
@@ -62,7 +62,7 @@ def make_same_random():
     for i in range(0,10):
         numlis.append(random.randint(1,100))
     return numlis
-    
+
 def call_make_random():
     """ Uses make_same_random to get a list of random numbers """
     random_integers = make_same_random()
@@ -71,11 +71,11 @@ def call_make_random():
     print(random_integers1)
 
 #%%
-""" 
+"""
 Exercise:
-Write a function make_random_real() that uses random.random() in place of 
+Write a function make_random_real() that uses random.random() in place of
 random.randint() to build a list of 10 random reals and returns that list.
-random.random() generates a random number between 0 and 1. 
+random.random() generates a random number between 0 and 1.
 Note: we want to return a list not print it.
 Here is my run.  Your list of random reals will likely be different from mine:
 In [2]: make_random_real()
@@ -96,6 +96,14 @@ Out[2]:
 Solution:
 """
 #%%
+def make_random_real():
+    randoms = []
+    for i in range(1,10):
+        randoms.append(random.random())
+
+    return randoms
+# print(make_random_real())
+# quit()
 
 
 
@@ -103,21 +111,20 @@ Solution:
 
 
 
-
-#%% 
+#%%
 """
 End solution
 """
- 
-""" 
+
+"""
 Exercise:
 Rewrite make_random_real() using random.seed() to get the same random reals
-each time. Run the function twice to show that you get the same set of 
+each time. Run the function twice to show that you get the same set of
 "random" numbers. A correct solution will display the same list each time it
 is run.  Return the list of random numbers rather than printing them.
 Here are a couple of my runs using 17 as the seed:
 make_same_random_real()
-Out[45]: 
+Out[45]:
 [0.5219839097124932,
  0.8066907771186791,
  0.9604947743238768,
@@ -130,7 +137,7 @@ Out[45]:
  0.3841711045442975]
 
 make_same_random_real()
-Out[46]: 
+Out[46]:
 [0.5219839097124932,
  0.8066907771186791,
  0.9604947743238768,
@@ -142,22 +149,27 @@ Out[46]:
  0.026936778790526805,
  0.3841711045442975]
 
-""" 
+"""
 """
 Solution:
-"""  
+"""
 #%%
+def make_same_random_real():
+    randoms = []
+    random.seed(200)
+    for i in range(1,10):
+        randoms.append(random.random())
+
+    return randoms
+
+first = make_same_random_real()
+second = make_same_random_real()
+# print(first == second)
+# quit()
 
 
 
 
-
-
-
-
-
-
-    
 #%%
 """
 End solution
@@ -165,7 +177,7 @@ End solution
 """
 SORTING LISTS
 
-Exercise: Sorting lists, including numbers as well as lower and upper case 
+Exercise: Sorting lists, including numbers as well as lower and upper case
 letters and strings.
 
 Do with me. Use the line of code below to create a list.
@@ -173,20 +185,20 @@ Do with me. Use the line of code below to create a list.
 #%%
 numlist = [67, 54, 39, 47, 38, 23, 99, 91, 91, 70]
 #%%
-""" 
+"""
 We use a method of lists to sort numlist.  It permanently reorders the list.
 """
 print(numlist)
 numlist.sort()
 print(numlist)
 #%%
-""" 
+"""
 Note that we already have a way of doing this sort. This doesn't permanently
-change the list. 
+change the list.
 """
 print(sorted(numlist))
 #%%
-""" 
+"""
 Below we make a random list of 10 letters of the alphabet. By setting the
 random seed, we insure that it generates the same list every time it is run.
 """
@@ -245,12 +257,12 @@ print(Strlist)
 Strlist.sort(key=str.lower)
 print(Strlist)
 #%%
-    
+
 """
 DESCRIPTIVE STATISTICS
 
   Go to docs.python.org/3/ and search statistics. Go to that library.
-  You can alternatively, go to Help>Python Documention in Spyder and search 
+  You can alternatively, go to Help>Python Documention in Spyder and search
   statistics in the index.  You see the same thing.
 """
 #%%
@@ -297,7 +309,7 @@ statistics.stdev(rlist)
 statistics.variance(rlist)
 #%%
 """
-list functions  --- max, min, sum 
+list functions  --- max, min, sum
 """
 #%%
 nlis = [3.14,-4,25,8,106,32]
@@ -315,14 +327,14 @@ import random
 stat_list = []
 for i in range(0,100):
     stat_list.append(1000*random.random()+5000)
-    
+
 ilis = [3, 1, 5, 2, 1, 3, 7, 3]
 #%%
 def my_stats(slis):
     import statistics
     print("Mean: ", statistics.mean(slis))
     print("Median: ", statistics.median(slis))
-    print("Mode: ", statistics.mode(slis))    
+    print("Mode: ", statistics.mode(slis))
 #    try:
 #        print("Mode: ", statistics.mode(slis))
 #    except statistics.StatisticsError as e:
@@ -345,12 +357,12 @@ def test_try():
         print(num)
     except Exception as e:
         print("Exception was: ", e)
-#%%    
+#%%
 """
 Exercise:
-Write a function temp_stat(temps) to compute the average, median, standard 
+Write a function temp_stat(temps) to compute the average, median, standard
 deviation and variance of the temperatures in the table.  Print each out.
-The following code generates the same temperatures each time because the seed 
+The following code generates the same temperatures each time because the seed
 is set. Print the temperature list as the first line of the function.
 
 Here is what my run on the table of temperatures built below looks like:
@@ -376,18 +388,14 @@ Solution:
 #%%
 def temp_stat(temps):
     """ prints the average, median, std dev, and variance of temps """
-    pass # replace this pass (a do-nothing) statement with your code
-    
+    print(temps)
+    print('Mean: ', statistics.mean(temps))
+    print('Median: ', statistics.median(temps))
+    print('Standard deviation: ', statistics.stdev(temps))
+    print('Variance: ', statistics.variance(temps))
 
-
-
-
-
-
-
-
-
-
+# temp_stat([2,3,2])
+# quit()
 
 #%%
 """
@@ -395,13 +403,13 @@ End solution
 """
 """
 Exercise:
-Add computing 'mode' to your solution to last exercise.  In the temperature 
-list that we constructed, there is no unique mode, so that the program will 
-crash unless you use try/except error handling.  See if you can add this 
+Add computing 'mode' to your solution to last exercise.  In the temperature
+list that we constructed, there is no unique mode, so that the program will
+crash unless you use try/except error handling.  See if you can add this
 feature to your solution.
 
 Note: if you change the seed to 277, then you will get a list that does have
-a unique mode.  You might like to try that. 
+a unique mode.  You might like to try that.
 
 Here is a run of my solution:
 
@@ -418,9 +426,15 @@ Mode error:  no unique mode; found 4 equally common values
 Solution:
 """
 #%%
-def temp_stat(temps):
+def temp_stat_mode(temps):
     """ computes the average, median, std dev, and variance of temps """
-    pass # replace this pass (a do-nothing) statement with your code
+    temp_stat(temps)
+    try:
+        print('Mode: ', statistics.mode(temps))
+    except Exception as e:
+        print('Woops!!!!!')
+
+# temp_stat_mode(temperatures)
 
 
 
@@ -443,8 +457,8 @@ a very brief introduction using name, age, and weight to illustrate.
 #%%
 nam1 = '"Teddy" Roosevelt'
 nam2 = 'Theodore "Teddy" Roosevelt'
-age = 60    
-wt = 199.1515115 
+age = 60
+wt = 199.1515115
 #%%
 # minimal formating -- {n} represents data item n --- notice misalignment
 out1 = "name: {0}  age: {1}  weight: {2}"
@@ -481,10 +495,10 @@ print("Start||{0:25}||End".format(s))
 print("Start||{0:25}||End".format(n))
 #%%
 """
-Exercise: 
+Exercise:
 Execute the following string and use it to try some of the following in the
 print("Start||{???}||End".format(s)) statement that would enable you to see
-what the format has done.  You can change what is in the {0:  } quickly, 
+what the format has done.  You can change what is in the {0:  } quickly,
 Ctrl-Enter to execute and see the result.  Or you can up-arrow and modify
 the previous version.
 a) Use {0} to just print the string with no formating; {} does the same thing
@@ -513,7 +527,10 @@ print("Start||{}||End".format(s))
 Solution:
 """
 s = "hello, there"
-
+# print("Start||{:25}||End".format(s))
+# print("Start||{:>25}||End".format(s))
+# print("Start||{:<25}||End".format(s))
+# print("Start||{:^25}||End".format(s))
 
 
 
@@ -549,7 +566,7 @@ def edit_phone():
 
 def save_phone_list():
     print("Saving")
-  
+
 def load_phone_list():
     print("Loading")
 
@@ -557,8 +574,8 @@ def show_phones():
     print("Showing phones")
 
 def create_phone():
-    print("Adding a phone")  
-  
+    print("Adding a phone")
+
 def menu_choice():
     """ Find out what the user wants to do next. """
     print("Choose one of the following options?")
@@ -567,7 +584,7 @@ def menu_choice():
     print("   d) Delete")
     print("   e) Edit")
     print("   q) Quit")
-    choice = input("Choice: ")    
+    choice = input("Choice: ")
     if choice.lower() in ['n','d', 's','e', 'q']:
         return choice.lower()
     else:
@@ -576,9 +593,9 @@ def menu_choice():
 
 
 def main_loop():
-    
+
     load_phone_list()
-    
+
     while True:
         choice = menu_choice()
         if choice == None:
@@ -596,12 +613,12 @@ def main_loop():
              edit_phone()
         else:
             print("Invalid choice.")
-            
-    save_phone_list()
-    
 
-# The following makes this program start running at main_loop() 
-# when executed as a stand-alone program.    
+    save_phone_list()
+
+
+# The following makes this program start running at main_loop()
+# when executed as a stand-alone program.
 if __name__ == '__main__':
     main_loop()
 #%%
@@ -610,23 +627,23 @@ if __name__ == '__main__':
 Version 2 -- show phones so we can see that the other functions work
 """
 
-phones = [['Jerry Seinfeld', '(212) 344-3784'], 
+phones = [['Jerry Seinfeld', '(212) 344-3784'],
           ['Cosmo Kramer', '(212) 559-8185']]
 name_pos = 0
 phone_pos = 1
 phone_header = [ 'Name', 'Phone Number']
 
- 
+
 def delete_phone():
     print("Deleting")
 
 def edit_phone():
     print("Editing")
 
-  
+
 def save_phone_list():
     print("saving")
-  
+
 def load_phone_list():
     print("loading")
 
@@ -643,8 +660,8 @@ def show_phone(phone, index):
     print(outputstr.format(index, phone[name_pos], phone[phone_pos]))
 
 def create_phone():
-    print("adding a phone")  
-  
+    print("adding a phone")
+
 def menu_choice():
     """ Find out what the user wants to do next. """
     print("Choose one of the following options?")
@@ -653,7 +670,7 @@ def menu_choice():
     print("   d) Delete")
     print("   e) Edit")
     print("   q) Quit")
-    choice = input("Choice: ")    
+    choice = input("Choice: ")
     if choice.lower() in ['n','d', 's','e', 'q']:
         return choice.lower()
     else:
@@ -661,9 +678,9 @@ def menu_choice():
         return None
 
 def main_loop():
-    
+
     load_phone_list()
-    
+
     while True:
         choice = menu_choice()
         if choice == None:
@@ -681,12 +698,12 @@ def main_loop():
              edit_phone()
         else:
             print("Invalid choice.")
-            
-    save_phone_list()
-    
 
-# The following makes this program start running at main_loop() 
-# when executed as a stand-alone program.    
+    save_phone_list()
+
+
+# The following makes this program start running at main_loop()
+# when executed as a stand-alone program.
 if __name__ == '__main__':
     main_loop()
 #%%
@@ -695,7 +712,7 @@ if __name__ == '__main__':
 Version 3 -- create phone; delete phone
 """
 
-phones = [['Jerry Seinfeld', '(212) 344-3784'], 
+phones = [['Jerry Seinfeld', '(212) 344-3784'],
           ['Cosmo Kramer', '(212) 559-8185']]
 name_pos = 0
 phone_pos = 1
@@ -710,7 +727,7 @@ def proper_menu_choice(which):
         print ("'" + str(which) + "' needs to be the number of a phone!")
         return False
     return True
-    
+
 def delete_phone(which):
     if not proper_menu_choice(which):
         return
@@ -722,10 +739,10 @@ def delete_phone(which):
 def edit_phone():
     print("Editing")
 
-  
+
 def save_phone_list():
     print("saving")
-  
+
 def load_phone_list():
     print("loading")
 
@@ -748,7 +765,7 @@ def create_phone():
     phone = [newname,newphone_num]
     phones.append(phone)
     print()
-    
+
 def menu_choice():
     """ Find out what the user wants to do next. """
     print("Choose one of the following options?")
@@ -757,7 +774,7 @@ def menu_choice():
     print("   d) Delete")
     print("   e) Edit")
     print("   q) Quit")
-    choice = input("Choice: ")    
+    choice = input("Choice: ")
     if choice.lower() in ['n','d', 's','e', 'q']:
         return choice.lower()
     else:
@@ -766,9 +783,9 @@ def menu_choice():
 
 
 def main_loop():
-    
+
     load_phone_list()
-    
+
     while True:
         choice = menu_choice()
         if choice == None:
@@ -788,12 +805,12 @@ def main_loop():
              edit_phone()
         else:
             print("Invalid choice.")
-            
-    save_phone_list()
-    
 
-# The following makes this program start running at main_loop() 
-# when executed as a stand-alone program.    
+    save_phone_list()
+
+
+# The following makes this program start running at main_loop()
+# when executed as a stand-alone program.
 if __name__ == '__main__':
     main_loop()
 #%%
@@ -802,7 +819,7 @@ if __name__ == '__main__':
 Version 4 -- edits a phone
 """
 
-phones = [['Jerry Seinfeld', '(212) 344-3784'], 
+phones = [['Jerry Seinfeld', '(212) 344-3784'],
           ['Cosmo Kramer', '(212) 559-8185']]
 name_pos = 0
 phone_pos = 1
@@ -817,12 +834,12 @@ def proper_menu_choice(which):
         print ("'" + str(which) + "' needs to be the number of a phone!")
         return False
     return True
-    
+
 def delete_phone(which):
     if not proper_menu_choice(which):
         return
     which = int(which)
-    
+
     del phones[which-1]
     print( "Deleted phone #", which)
 
@@ -830,27 +847,27 @@ def edit_phone(which):
     if not proper_menu_choice(which):
         return
     which = int(which)
-        
+
     phone = phones[which-1]
     print("Enter the data for a new phone. Press <enter> to leave unchanged.")
-    
+
     print(phone[name_pos])
     newname = input("Enter phone name to change or press return: ")
     if newname == "":
         newname = phone[name_pos]
-        
-    print(phone[phone_pos])    
+
+    print(phone[phone_pos])
     newphone_num = input("Enter new phone number to change or press return: ")
     if newphone_num == "":
         newphone_num = phone[phone_pos]
-            
+
     phone = [newname, newphone_num]
     phones[which-1] = phone
 
-  
+
 def save_phone_list():
     print("saving")
-  
+
 def load_phone_list():
     print("loading")
 
@@ -872,7 +889,7 @@ def create_phone():
     newphone_num = input("Enter phone number: ")
     phone = [newname,newphone_num]
     phones.append(phone)
-    
+
 def menu_choice():
     """ Find out what the user wants to do next. """
     print("Choose one of the following options?")
@@ -881,7 +898,7 @@ def menu_choice():
     print("   d) Delete")
     print("   e) Edit")
     print("   q) Quit")
-    choice = input("Choice: ")    
+    choice = input("Choice: ")
     if choice.lower() in ['n','d', 's','e', 'q']:
         return choice.lower()
     else:
@@ -890,9 +907,9 @@ def menu_choice():
 
 
 def main_loop():
-    
+
     load_phone_list()
-    
+
     while True:
         choice = menu_choice()
         if choice == None:
@@ -914,12 +931,12 @@ def main_loop():
             edit_phone(which)
         else:
             print("Invalid choice.")
-            
-    save_phone_list()
-    
 
-# The following makes this program start running at main_loop() 
-# when executed as a stand-alone program.    
+    save_phone_list()
+
+
+# The following makes this program start running at main_loop()
+# when executed as a stand-alone program.
 if __name__ == '__main__':
     main_loop()
 #%%
@@ -930,7 +947,7 @@ Version 5 -- saves to a csv file called myphones.csv
 import csv
 
 
-phones = [['Jerry Seinfeld', '(212) 344-3784'], 
+phones = [['Jerry Seinfeld', '(212) 344-3784'],
           ['Cosmo Kramer', '(212) 559-8185']]
 name_pos = 0
 phone_pos = 1
@@ -945,7 +962,7 @@ def proper_menu_choice(which):
         print ("'" + str(which) + "' needs to be the number of a phone!")
         return False
     return True
-    
+
 def delete_phone(which):
     if not proper_menu_choice(which):
         return
@@ -958,31 +975,31 @@ def edit_phone(which):
     if not proper_menu_choice(which):
         return
     which = int(which)
-        
+
     phone = phones[which-1]
     print("Enter the data for a new phone. Press <enter> to leave unchanged.")
-    
+
     print(phone[name_pos])
     newname = input("Enter phone name to change or press return: ")
     if newname == "":
         newname = phone[name_pos]
-        
-    print(phone[phone_pos])    
+
+    print(phone[phone_pos])
     newphone_num = input("Enter new phone number to change or press return: ")
     if newphone_num == "":
         newphone_num = phone[phone_pos]
-            
+
     phone = [newname, newphone_num]
     phones[which-1] = phone
 
-  
+
 def save_phone_list():
 
     f = open("myphones.csv", 'w', newline='')
     for item in phones:
         csv.writer(f).writerow(item)
     f.close()
-  
+
 def load_phone_list():
     print("loading")
 
@@ -1004,7 +1021,7 @@ def create_phone():
     newphone_num = input("Enter phone number: ")
     phone = [newname,newphone_num]
     phones.append(phone)
-    
+
 def menu_choice():
     """ Find out what the user wants to do next. """
     print("Choose one of the following options?")
@@ -1013,7 +1030,7 @@ def menu_choice():
     print("   d) Delete")
     print("   e) Edit")
     print("   q) Quit")
-    choice = input("Choice: ")    
+    choice = input("Choice: ")
     if choice.lower() in ['n','d', 's','e', 'q']:
         return choice.lower()
     else:
@@ -1022,9 +1039,9 @@ def menu_choice():
 
 
 def main_loop():
-    
+
     load_phone_list()
-    
+
     while True:
         choice = menu_choice()
         if choice == None:
@@ -1046,12 +1063,12 @@ def main_loop():
             edit_phone(which)
         else:
             print("Invalid choice.")
-            
-    save_phone_list()
-    
 
-# The following makes this program start running at main_loop() 
-# when executed as a stand-alone program.    
+    save_phone_list()
+
+
+# The following makes this program start running at main_loop()
+# when executed as a stand-alone program.
 if __name__ == '__main__':
     main_loop()
 
@@ -1083,7 +1100,7 @@ def proper_menu_choice(which):
         print ("'" + str(which) + "' needs to be the number of a phone!")
         return False
     return True
-    
+
 def delete_phone(which):
     if not proper_menu_choice(which):
         return
@@ -1096,31 +1113,31 @@ def edit_phone(which):
     if not proper_menu_choice(which):
         return
     which = int(which)
-        
+
     phone = phones[which-1]
     print("Enter the data for a new phone. Press <enter> to leave unchanged.")
-    
+
     print(phone[name_pos])
     newname = input("Enter phone name to change or press return: ")
     if newname == "":
         newname = phone[name_pos]
-        
-    print(phone[phone_pos])    
+
+    print(phone[phone_pos])
     newphone_num = input("Enter new phone number to change or press return: ")
     if newphone_num == "":
         newphone_num = phone[phone_pos]
-            
+
     phone = [newname, newphone_num]
     phones[which-1] = phone
 
-  
+
 def save_phone_list():
 
     f = open("myphones.csv", 'w', newline='')
     for item in phones:
         csv.writer(f).writerow(item)
     f.close()
-  
+
 def load_phone_list():
     if os.access("myphones.csv",os.F_OK):
         f = open("myphones.csv")
@@ -1146,7 +1163,7 @@ def create_phone():
     newphone_num = input("Enter phone number: ")
     phone = [newname,newphone_num]
     phones.append(phone)
-    
+
 def menu_choice():
     """ Find out what the user wants to do next. """
     print("Choose one of the following options?")
@@ -1155,7 +1172,7 @@ def menu_choice():
     print("   d) Delete")
     print("   e) Edit")
     print("   q) Quit")
-    choice = input("Choice: ")    
+    choice = input("Choice: ")
     if choice.lower() in ['n','d', 's','e', 'q']:
         return choice.lower()
     else:
@@ -1165,9 +1182,9 @@ def menu_choice():
 
 
 def main_loop():
-    
+
     load_phone_list()
-    
+
     while True:
         choice = menu_choice()
         if choice == None:
@@ -1189,12 +1206,12 @@ def main_loop():
             edit_phone(which)
         else:
             print("Invalid choice.")
-            
-    save_phone_list()
-    
 
-# The following makes this program start running at main_loop() 
-# when executed as a stand-alone program.    
+    save_phone_list()
+
+
+# The following makes this program start running at main_loop()
+# when executed as a stand-alone program.
 if __name__ == '__main__':
     main_loop()
 #%%
